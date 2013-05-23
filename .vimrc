@@ -281,12 +281,12 @@ set nofoldenable
 
 " My information
 iab xdate <C-R>=strftime("%d/%m/%Y %H:%M:%S")
-iab xname <C-R> William Durand
-iab xsigp <C-R> William Durand <william.durand1@gmail.com>
-iab xsigw <C-R> William Durand <william.durand1@gmail.com>
+iab xname <C-R> Ruben Cordeiro
+iab xsigp <C-R> Ruben Cordeiro <seti.gallego@gmail.com>
+iab xsigw <C-R> Ruben Cordeiro <seti.gallego@gmail.com>
 
 " snipMate
-let g:snips_author = 'William Durand <william.durand1@gmail.com>'
+let g:snips_author = 'Ruben Cordeiro <seti.gallego@gmail.com>'
 
 " invisible character
 nmap <leader>l :set list!<CR>
