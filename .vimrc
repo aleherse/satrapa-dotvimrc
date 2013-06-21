@@ -69,6 +69,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/phpfolding.vim'
 " git diff in 
 Bundle 'airblade/vim-gitgutter'
+"xdbebug client
 
 " vim-scripts repos
 " Bundle 'L9'
