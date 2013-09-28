@@ -70,6 +70,9 @@ Bundle 'vim-scripts/phpfolding.vim'
 " git diff in 
 Bundle 'airblade/vim-gitgutter'
 "xdbebug client
+Bundle 'vim-scripts/Xdebug'
+"PhpDoc
+Bundle 'tobyS/pdv'
 
 " vim-scripts repos
 " Bundle 'L9'
@@ -325,6 +328,16 @@ map <leader>tl :tablast<cr>
 map <leader>tm :tabmove<cr>
 map <leader>tr :tabrewind<cr>
 map <leader>te :tabedit<cr>
+map <leader>te :tabedit<cr>
+
+map <leader>nt :NERDTree<cr>
+
+
+
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
 
 " create directory if not exists
 au BufWrite * :call <SID>MkdirsIfNotExists(expand('<afile>:h'))
@@ -355,3 +368,5 @@ let feature_filetype='behat'
 
 " make
 map <leader>m :make<cr>
+let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+nnoremap <buffer> <C-p> :call pdv#DocumentCurrentLine()<CR>
