@@ -14,7 +14,7 @@ if !filereadable(vundle_readme)
 endif
 
 
-filetype off                    " vundle required
+filetype on                    " vundle required
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -66,13 +66,21 @@ Bundle 'tpope/vim-fugitive'
 " color for the theaming
 Bundle 'altercation/vim-colors-solarized'
 " forldin for php
-Bundle 'vim-scripts/phpfolding.vim'
+"Bundle 'vim-scripts/phpfolding.vim'
 " git diff in 
 Bundle 'airblade/vim-gitgutter'
 "xdbebug client
 Bundle 'vim-scripts/Xdebug'
 "PhpDoc
 Bundle 'tobyS/pdv'
+"PIV
+Bundle 'Shougo/neocomplcache.vim'
+Bundle 'avakhov/vim-yaml'
+Bundle 'SirVer/ultisnips'
+Bundle 'stephpy/vim-php-cs-fixer'
+
+Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'm2mdas/phpcomplete-extended-symfony'
 
 " vim-scripts repos
 " Bundle 'L9'
@@ -330,7 +338,7 @@ map <leader>tr :tabrewind<cr>
 map <leader>te :tabedit<cr>
 map <leader>te :tabedit<cr>
 
-map <leader>nt :NERDTree<cr>
+map <leader>nt :NERDTreeTabsToggle<cr>
 
 
 
@@ -370,3 +378,30 @@ let feature_filetype='behat'
 map <leader>m :make<cr>
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 nnoremap <buffer> <C-p> :call pdv#DocumentCurrentLine()<CR>
+if has("autocmd")
+  " Enable file type detection
+  filetype on
+   
+  " Syntax of these languages is fussy over tabs Vs spaces
+  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+   
+  " Customisations based on house-style (arbitrary)
+  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+   
+  " Treat .rss files as XML
+  autocmd BufNewFile,BufRead *.rss setfiletype xml
+endif
+let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
+" PHP documenter script bound to Control-P
+autocmd FileType php inoremap <C-p> <ESC>:call PhpDocSingle()<CR>i
+autocmd FileType php nnoremap <C-p> :call PhpDocSingle()<CR>
+autocmd FileType php vnoremap <C-p> :call PhpDocRange()<CR> 
+let php_folding = 1
+augroup vimrc
+      au BufReadPre * setlocal foldmethod=indent
+        au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
+augroup END
