@@ -1,111 +1,118 @@
 set nocompatible                " choose no compatibility with legacy vi
 
-
+"TODO
 "" Setting up Vundle - the vim plugin bundler
 "" Stolen ;) from http://www.erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/
-let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-if !filereadable(vundle_readme)
-    echo "Installing Vundle.."
-    echo ""
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-    let iCanHazVundle=0
+"let iCanHazVundle=1
+"let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+"if !filereadable(vundle_readme)
+"    echo "Installing Vundle.."
+"    echo ""
+"    silent !mkdir -p ~/.vim/bundle
+"    silent !clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+"    let iCanHazVundle=0
+"endif
+
+
+
+if has('vim_starting')
+    set rtp+=~/.vim/bundle/neobundle.vim
 endif
+call neobundle#rc(expand('~/.vim/bundle'))
 
 
-filetype on                    " vundle required
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+syntax on
+filetype plugin indent on
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+NeoBundle 'gmarik/vundle'
 
-" My Bundles here:
+" My NeoBundles here:
 "
 " original repos on github
-" Bundle 'tpope/vim-fugitive'
-" Bundle 'Lokaltog/vim-easymotion'
-" Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Bundle 'tpope/vim-rails.git'
 
-" Vombato color scheme
-Bundle 'molok/vim-vombato-colorscheme'
-" Wombat256 color scheme
-Bundle 'vim-scripts/wombat256.vim'
+NeoBundle 'Shougo/unite.vim'
 " TextMate Snippets
-Bundle 'msanders/snipmate.vim'
+NeoBundle 'msanders/snipmate.vim'
 " Insert use statements automatically
-Bundle 'arnaud-lb/vim-php-namespace'
+NeoBundle 'arnaud-lb/vim-php-namespace'
 " Symfony stuff
-Bundle 'docteurklein/vim-symfony'
+NeoBundle 'docteurklein/vim-symfony'
 " PHPUnit support
-Bundle 'docteurklein/vim-phpunit'
+NeoBundle 'docteurklein/vim-phpunit'
 " PHP5.4 support
-Bundle 'shawncplus/php.vim'
+NeoBundle 'shawncplus/php.vim'
+NeoBundle 'tobyS/vmustache'
 " NERDTree
-Bundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/nerdtree'
 " Twig support
-Bundle 'evidens/vim-twig'
+NeoBundle 'evidens/vim-twig'
 " HTML snippets
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Surround with parentheses, brackets, quotes, tags...
-Bundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-surround'
 " Groovy support
-Bundle 'vim-scripts/groovy.vim'
+NeoBundle 'vim-scripts/groovy.vim'
 " Sintax checking
-Bundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/syntastic'
 " Full path finder
-Bundle 'kien/ctrlp.vim'
+NeoBundle 'kien/ctrlp.vim'
 " Better statusline
-"Bundle 'Lokaltog/vim-powerline'
-Bundle 'Lokaltog/powerline'
+"NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'Lokaltog/powerline'
 " Git support
-Bundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-fugitive'
 " color for the theaming
-Bundle 'altercation/vim-colors-solarized'
+NeoBundle 'altercation/vim-colors-solarized'
 " forldin for php
-"Bundle 'vim-scripts/phpfolding.vim'
+"NeoBundle 'vim-scripts/phpfolding.vim'
 " git diff in 
-Bundle 'airblade/vim-gitgutter'
+NeoBundle 'airblade/vim-gitgutter'
 "xdbebug client
-Bundle 'vim-scripts/Xdebug'
+NeoBundle 'joonty/vdebug.git'
 "PhpDoc
-Bundle 'tobyS/pdv'
+NeoBundle 'tobyS/pdv'
 "PIV
-Bundle 'Shougo/neocomplcache.vim'
-Bundle 'avakhov/vim-yaml'
-Bundle 'SirVer/ultisnips'
-Bundle 'stephpy/vim-php-cs-fixer'
+NeoBundle 'Shougo/neocomplcache.vim'
+NeoBundle 'avakhov/vim-yaml'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'stephpy/vim-php-cs-fixer'
 
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'm2mdas/phpcomplete-extended-symfony'
+NeoBundle 'jistr/vim-nerdtree-tabs'
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
 
 " vim-scripts repos
-" Bundle 'L9'
-" Bundle 'FuzzyFinder'
+" NeoBundle 'L9'
+" NeoBundle 'FuzzyFinder'
 
 " Jinja vim
-Bundle 'Jinja'
+NeoBundle 'Jinja'
 
 " non github repos
-" Bundle 'git://git.wincent.com/command-t.git'
+" NeoBundle 'git://git.wincent.com/command-t.git'
 
 " Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+" :NeoBundleList          - list configured bundles
+" :NeoBundleInstall(!)    - install(update) bundles
+" :NeoBundleSearch(!) foo - search(or refresh cache first) for foo
+" :NeoBundleClean(!)      - confirm(or auto-approve) removal of unused bundles
 " 
 " see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
+" NOTE: comments after NeoBundle command are not allowed..
 
-if iCanHazVundle == 0
-    echo "Installing Bundles, please ignore key map error messages"
-    echo ""
-    :BundleInstall
-endif
+"if iCanHazVundle == 0
+"    echo "Installing NeoBundles, please ignore key map error messages"
+"    echo ""
+"    :NeoBundleInstall
+"endif
 "" Setting up Vundle - the vim plugin bundler end
 
 
@@ -336,7 +343,6 @@ map <leader>tl :tablast<cr>
 map <leader>tm :tabmove<cr>
 map <leader>tr :tabrewind<cr>
 map <leader>te :tabedit<cr>
-map <leader>te :tabedit<cr>
 
 map <leader>nt :NERDTreeTabsToggle<cr>
 
@@ -347,6 +353,7 @@ nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
 
+noremap <Leader>u :call PhpInsertUse()<CR>
 " create directory if not exists
 au BufWrite * :call <SID>MkdirsIfNotExists(expand('<afile>:h'))
 function! <SID>MkdirsIfNotExists(directory)
@@ -377,7 +384,8 @@ let feature_filetype='behat'
 " make
 map <leader>m :make<cr>
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
-nnoremap <buffer> <C-p> :call pdv#DocumentCurrentLine()<CR>
+map <leader>d :call pdv#DocumentWithSnip()<CR>
+
 if has("autocmd")
   " Enable file type detection
   filetype on
@@ -394,14 +402,12 @@ if has("autocmd")
   " Treat .rss files as XML
   autocmd BufNewFile,BufRead *.rss setfiletype xml
 endif
-let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
-nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
-" PHP documenter script bound to Control-P
-autocmd FileType php inoremap <C-p> <ESC>:call PhpDocSingle()<CR>i
-autocmd FileType php nnoremap <C-p> :call PhpDocSingle()<CR>
-autocmd FileType php vnoremap <C-p> :call PhpDocRange()<CR> 
+
+let g:php_cs_fixer_level = "all" 
+let g:php_cs_fixer_verbose = 1
 let php_folding = 1
 augroup vimrc
       au BufReadPre * setlocal foldmethod=indent
         au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
 augroup END
+NeoBundleCheck
