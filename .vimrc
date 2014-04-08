@@ -16,9 +16,12 @@ set nocompatible                " choose no compatibility with legacy vi
 
 
 if has('vim_starting')
-    set rtp+=~/.vim/bundle/neobundle.vim
+  set nocompatible               " Be iMproved
+   " Required:
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
-call neobundle#rc(expand('~/.vim/bundle'))
+
+call neobundle#rc(expand('~/.vim/bundle/'))
 
 
 syntax on
@@ -26,7 +29,7 @@ filetype plugin indent on
 
 " let Vundle manage Vundle
 " required! 
-NeoBundle 'gmarik/vundle'
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My NeoBundles here:
 "
@@ -333,7 +336,7 @@ function! StripTrailingWhitespace()
     endif
     normal `Z
 endfunction
-autocmd BufWritePre *.md,*.markdown,*.mkd,*.pp*.php,*.yml,*.xml,*.js,*.html,*.css,*.java,*.c,*.cpp,*.vim :call StripTrailingWhitespace()
+autocmd BufWritePre *.md,*.markdown,*.mkd,*.pp*.php*.tao,*.yml,*.xml,*.js,*.html,*.css,*.java,*.c,*.cpp,*.vim :call StripTrailingWhitespace()
 
 " tab mappings
 map <leader>tp :tabprevious<cr>
@@ -410,4 +413,10 @@ augroup vimrc
       au BufReadPre * setlocal foldmethod=indent
         au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
 augroup END
+au BufRead,BufNewFile *.tao set filetype=php
 NeoBundleCheck
+let g:vdebug_options = {  
+\'path_maps': {"/vagrant/app/src" :"/home/rcondeiro/work/carlsberg-uk/app/src"},  
+\'server': '0.0.0.0'
+\}
+
