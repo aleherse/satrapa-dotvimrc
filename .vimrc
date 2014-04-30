@@ -416,7 +416,10 @@ augroup END
 au BufRead,BufNewFile *.tao set filetype=php
 NeoBundleCheck
 let g:vdebug_options = {  
-\'path_maps': {"/vagrant/app/src" :"/home/rcondeiro/work/carlsberg-uk/app/src"},  
+\'path_maps': {
+\"/vagrant/app/src" :"/home/rcondeiro/work/carlsberg-uk/app/src",
+\"/var/www/martsons/src" :"/home/rcondeiro/work/marstons-taverns/src"
+\},  
 \'server': '0.0.0.0'
 \}
 
