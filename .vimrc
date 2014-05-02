@@ -1,4 +1,12 @@
 set nocompatible                " choose no compatibility with legacy vi
+"Patched ctags to be aware of namespaces 
+"Download  source code: wget "https://github.com/shawncplus/phpcomplete.vim/blob/master/misc/ctags-better-php-parser.tar.bz2?raw=true" -O ctags-better-php-parser.tar.bz2
+"Extract: tar xvjf ctags-better-php-parser.tar.bz2
+"Configure: ./configure    --         make
+"Install ctags sudo   make install 
+
+
+"Using ctags  ctags -R --fields=+aimS --languages=php
 
 "TODO
 "" Setting up Vundle - the vim plugin bundler
