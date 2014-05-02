@@ -81,8 +81,10 @@ NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'avakhov/vim-yaml'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'stephpy/vim-php-cs-fixer'
+NeoBundle 'shawncplus/phpcomplete.vim'
 
 NeoBundle 'jistr/vim-nerdtree-tabs'
+NeoBundle 'thanthese/Tortoise-Typing'
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -409,6 +411,7 @@ endif
 let g:php_cs_fixer_level = "all" 
 let g:php_cs_fixer_verbose = 1
 let php_folding = 1
+
 augroup vimrc
       au BufReadPre * setlocal foldmethod=indent
         au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
